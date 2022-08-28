@@ -3,6 +3,16 @@ class ErrorFetchingSpotifyData(Exception):
         super().__init__(msg, *args, **kwargs)
 
 
+class ClientSecretKeysNotProvided(Exception):
+    def __init__(self, msg="YOU MUST SET A client_secret and client_secret", *args, **kwargs):
+        super().__init__(msg, *args, **kwargs)
+
+
+class ErrorFetchingWeatherData(Exception):
+    def __init__(self, msg="Error fetching data from Weather API", *args, **kwargs):
+        super().__init__(msg, *args, **kwargs)
+
+
 class ForbiddenError(Exception):
     def __init__(self, msg="Forbidden", *args, **kwargs):
         super().__init__(msg, *args, **kwargs)

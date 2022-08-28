@@ -6,6 +6,9 @@ import datetime
 from decouple import config
 import requests
 
+# PROJECT IMPORTS
+from src.domain.exceptions.exceptions import ClientSecretKeysNotProvided
+
 
 class SpotifyAPI(object):
     token_url = config('SPOTIFY_TOKEN_URL')
@@ -23,7 +26,7 @@ class SpotifyAPI(object):
 
         """return the base64 encoded string"""
         if self.client_secret is None and self.client_secret is None:
-            raise Exception("YOU MUST SET A client_secret and client_secret")
+            raise ClientSecretKeysNotProvided
 
         client_credentials = f"{self.client_id}:{self.client_secret}"
         client_credentials_b64 = base64.b64encode(client_credentials.encode())

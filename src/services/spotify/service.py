@@ -70,9 +70,3 @@ class SpotifyPlaylistsService:
             music_list.append(musics_dict)
 
         return music_list
-
-
-if __name__ == '__main__':
-    party = SpotifyPlaylistsService.pop_playlist_objects()
-
-    print(party)
