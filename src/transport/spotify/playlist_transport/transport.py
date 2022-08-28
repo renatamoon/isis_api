@@ -2,7 +2,6 @@
 import requests
 from decouple import config
 from loguru import logger
-from requests import Response
 
 # PROJECT IMPORTS
 from src.domain.exceptions.exceptions import ErrorFetchingSpotifyData
@@ -22,7 +21,7 @@ class GetPlaylistsFromSpotify:
     classic_playlist = config("CLASSIC_PLAYLIST_URL")
 
     @classmethod
-    def get_party_playlist(cls) -> Response:
+    def get_party_playlist(cls):
         headers = cls.__get_access_token_and_reader()
 
         try:
@@ -36,12 +35,12 @@ class GetPlaylistsFromSpotify:
             raise ErrorFetchingSpotifyData
 
     @classmethod
-    def get_pop_playlist(cls) -> Response:
+    def get_pop_playlist(cls):
         try:
             headers = cls.__get_access_token_and_reader()
 
             response = requests.get(
-                url=cls.party_playlist, headers=headers
+                url=cls.pop_playlist, headers=headers
             )
             return response.json()
 
@@ -50,12 +49,12 @@ class GetPlaylistsFromSpotify:
             raise ErrorFetchingSpotifyData
 
     @classmethod
-    def get_rock_playlist(cls) -> Response:
+    def get_rock_playlist(cls):
         try:
             headers = cls.__get_access_token_and_reader()
 
             response = requests.get(
-                url=cls.party_playlist, headers=headers
+                url=cls.rock_playlist, headers=headers
             )
             return response.json()
 
@@ -64,12 +63,12 @@ class GetPlaylistsFromSpotify:
             raise ErrorFetchingSpotifyData
 
     @classmethod
-    def get_classic_playlist(cls) -> Response:
+    def get_classic_playlist(cls):
         try:
             headers = cls.__get_access_token_and_reader()
 
             response = requests.get(
-                url=cls.party_playlist, headers=headers
+                url=cls.classic_playlist, headers=headers
             )
             return response.json()
 
