@@ -1,7 +1,6 @@
 # STANDARD IMPORTS
 import requests
 from decouple import config
-from loguru import logger
 
 # PROJECT IMPORTS
 from src.domain.exceptions.exceptions import ErrorFetchingSpotifyData
@@ -22,16 +21,14 @@ class GetPlaylistsFromSpotify:
 
     @classmethod
     def get_party_playlist(cls):
-        headers = cls.__get_access_token_and_reader()
-
         try:
+            headers = cls.__get_access_token_and_reader()
+
             response = requests.get(
                 url=cls.party_playlist, headers=headers
             )
             return response.json()
-
-        except Exception as ex:
-            logger.error(ex=ex)
+        except Exception:
             raise ErrorFetchingSpotifyData
 
     @classmethod
@@ -44,8 +41,7 @@ class GetPlaylistsFromSpotify:
             )
             return response.json()
 
-        except Exception as ex:
-            logger.error(ex=ex)
+        except Exception:
             raise ErrorFetchingSpotifyData
 
     @classmethod
@@ -58,8 +54,7 @@ class GetPlaylistsFromSpotify:
             )
             return response.json()
 
-        except Exception as ex:
-            logger.error(ex=ex)
+        except Exception:
             raise ErrorFetchingSpotifyData
 
     @classmethod
@@ -72,8 +67,7 @@ class GetPlaylistsFromSpotify:
             )
             return response.json()
 
-        except Exception as ex:
-            logger.error(ex=ex)
+        except Exception:
             raise ErrorFetchingSpotifyData
 
     @classmethod

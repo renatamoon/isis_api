@@ -26,8 +26,10 @@ class WeatherAPIService:
     def get_weather_information_by_city(
             cls, city_model: CityModel
     ):
+        city = city_model.city.capitalize()
+
         weather_info = cls.transport.get_city_weather(
-            city_name=city_model.city
+            city_name=city
         )
 
         weather_response, temperature = cls.__get_weather_information(
@@ -42,18 +44,18 @@ class WeatherAPIService:
             weather_info: dict
     ):
         city = weather_info.get("name")
-        temperature = weather_info.get("main").get("temp")
         description = weather_info.get("weather").pop().get("description")
+
+        temperature = weather_info.get("main").get("temp")
+        celsius_temperature = cls.__convert_kelvin_to_celsius(temperature)
 
         weather_response = {
             "city": city,
-            "temperature": cls.__convert_kelvin_to_celsius(
-                kelvin_temperature=temperature
-            ),
+            "temperature": celsius_temperature,
             "description": description
         }
 
-        return weather_response, temperature
+        return weather_response, celsius_temperature
 
     @staticmethod
     def __convert_kelvin_to_celsius(kelvin_temperature: float):

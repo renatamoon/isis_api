@@ -3,9 +3,6 @@ from fastapi import FastAPI, Response, Request
 from starlette import status
 import json
 
-# THIRD PART IMPORTS
-from loguru import logger
-
 # PROJECT IMPORTS
 from src.routers.playlist_weather_router.router import PlaylistWeatherRouter
 from src.domain.exceptions.exceptions import (
@@ -50,7 +47,6 @@ class BaseRouter:
             response = await call_next(request)
 
         except UnauthorizedError as e:
-            logger.error(erro=e)
             return Response(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 content=json.dumps(
@@ -81,15 +77,14 @@ class BaseRouter:
                 ),
             )
 
-        except Exception as err:
-            logger.error(erro=err)
+        except Exception as e:
             return Response(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 content=json.dumps(
                     {
                         "request_status": False,
                         "status": 6,
-                        "msg": "An unexpected error occurred",
+                        "msg": f"An unexpected error occurred, {e}",
                     }
                 ),
             )

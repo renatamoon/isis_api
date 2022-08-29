@@ -31,7 +31,7 @@ class MainServiceWeatherPlaylist:
             coordinate_model: CoordinatesModel = None,
             city_model: CityModel = None
     ):
-        if coordinate_model:
+        if coordinate_model.latitude and coordinate_model.longitude:
             weather_response, temperature = WeatherAPIService.get_weather_information_coordinates(
                 coordinates_model=coordinate_model
             )

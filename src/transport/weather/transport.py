@@ -25,8 +25,7 @@ class GetWeather:
 
             return data
 
-        except Exception as ex:
-            logger.error(ex=ex)
+        except Exception:
             raise ErrorFetchingWeatherData
 
     @classmethod
@@ -40,6 +39,5 @@ class GetWeather:
             data = json.loads(weather_response.text)
 
             return data
-        except Exception as ex:
-            logger.error(ex=ex)
+        except Exception:
             raise ErrorFetchingWeatherData
