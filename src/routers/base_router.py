@@ -6,8 +6,9 @@ import json
 # THIRD PART IMPORTs
 from loguru import logger
 
-from src.domain.exceptions.exceptions import DataNotFoundError, InternalServerError, BadRequestError, ForbiddenError, \
+from src.domain.exceptions.exceptions import InternalServerError, BadRequestError, ForbiddenError, \
     UnauthorizedError
+from src.routers.playlist_weather_router.router import PlaylistWeatherRouter
 
 
 class BaseRouter:
@@ -20,14 +21,14 @@ class BaseRouter:
     )
 
     @staticmethod
-    def __register_router_exchange():
-        exchange_router = ExchangeRouter.get_exchange_router()
-        BaseRouter.app.include_router(exchange_router)
+    def __register_router_playlist():
+        weather_playlist_router = PlaylistWeatherRouter.get_playlist_weather_router()
+        BaseRouter.app.include_router(weather_playlist_router)
         return BaseRouter.app
 
     @staticmethod
     def register_routers():
-        BaseRouter.__register_router_exchange()
+        BaseRouter.__register_router_playlist()
 
         return BaseRouter.app
 
@@ -73,15 +74,6 @@ class BaseRouter:
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 content=json.dumps(
                     {"request_status": False, "status": 5, "msg": e.args[0]}
-                ),
-            )
-
-        except DataNotFoundError as e:
-            logger.error(erro=e)
-            return Response(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                content=json.dumps(
-                    {"request_status": False, "status": 14, "msg": e.args[0]}
                 ),
             )
 

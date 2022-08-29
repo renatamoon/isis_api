@@ -27,7 +27,7 @@ class GetWeather:
 
         except Exception as ex:
             logger.error(ex=ex)
-            raise ErrorFetchingWeatherData()
+            raise ErrorFetchingWeatherData
 
     @classmethod
     def get_city_weather(cls, city_name: str) -> dict:
@@ -40,7 +40,6 @@ class GetWeather:
             data = json.loads(weather_response.text)
 
             return data
-
         except Exception as ex:
             logger.error(ex=ex)
-            raise ErrorFetchingWeatherData()
+            raise ErrorFetchingWeatherData
