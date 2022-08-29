@@ -1,6 +1,7 @@
-# Standard Libs
-from fastapi import Request, APIRouter, Depends
+# STANDARD IMPORTS
+from fastapi import APIRouter, Depends
 
+# PROJECT IMPORTS
 from src.domain.models.weather.models import CoordinatesModel, CityModel
 from src.services.main_service.service import MainServiceWeatherPlaylist
 
@@ -16,7 +17,6 @@ class PlaylistWeatherRouter:
     @staticmethod
     @__playlist_by_weather_router.get("/get_playlist_weather", tags=["PLAYLIST WEATHER"])
     async def get_playlist_response(
-            request: Request,
             coordinate_model: CoordinatesModel = Depends(),
             city_model: CityModel = Depends()
     ):

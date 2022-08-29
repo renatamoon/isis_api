@@ -47,18 +47,17 @@ class MainServiceWeatherPlaylist:
 
             return response_dict
 
-        else:
-            weather_response, temperature = WeatherAPIService.get_weather_information_by_city(
-                city_model=city_model
-            )
+        weather_response, temperature = WeatherAPIService.get_weather_information_by_city(
+            city_model=city_model
+        )
 
-            playlist_response = cls.get_playlists(
-                temperature=temperature
-            )
+        playlist_response = cls.get_playlists(
+            temperature=temperature
+        )
 
-            response_dict = {
-                **weather_response,
-                **playlist_response
-            }
+        response_dict = {
+            **weather_response,
+            **playlist_response
+        }
 
-            return response_dict
+        return response_dict

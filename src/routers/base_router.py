@@ -1,21 +1,25 @@
 # STANDARD IMPORTS
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Response, Request
 from starlette import status
 import json
 
-# THIRD PART IMPORTs
+# THIRD PART IMPORTS
 from loguru import logger
 
-from src.domain.exceptions.exceptions import InternalServerError, BadRequestError, ForbiddenError, \
-    UnauthorizedError
+# PROJECT IMPORTS
 from src.routers.playlist_weather_router.router import PlaylistWeatherRouter
+from src.domain.exceptions.exceptions import (
+    InternalServerError,
+    BadRequestError, ForbiddenError,
+    UnauthorizedError
+)
 
 
 class BaseRouter:
 
     app = FastAPI(
         title="ISIS API",
-        description="micro-service able to accept RESTful requests receiving as parameter either city name or lat "
+        description="micro-service able to accept RESTFUL requests receiving as parameter either city name or lat "
                     "long coordinates and returns a playlist (only track names is fine) suggestion according "
                     "to the current temperature.",
     )
@@ -85,7 +89,7 @@ class BaseRouter:
                     {
                         "request_status": False,
                         "status": 6,
-                        "msg": "An unexpected error ocurred",
+                        "msg": "An unexpected error occurred",
                     }
                 ),
             )

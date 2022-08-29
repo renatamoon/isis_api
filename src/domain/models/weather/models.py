@@ -1,12 +1,13 @@
 # STANDARD IMPORTS
 from typing import Optional
+from fastapi import Query
 from pydantic import BaseModel
 
 
 class CoordinatesModel(BaseModel):
-    latitude: Optional[str] = None
-    longitude: Optional[str] = None
+    latitude: Optional[str] = Query(default=None)
+    longitude: Optional[str] = Query(default=None)
 
 
 class CityModel(BaseModel):
-    city: Optional[str] = None
+    city: Optional[str] = Query(default=None)
