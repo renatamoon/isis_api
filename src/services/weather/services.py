@@ -47,8 +47,8 @@ class WeatherAPIService:
 
         weather_response = {
             "city": city,
-            "temperature": cls.__convert_fahrenheit_to_celsius(
-                fah_temperature=temperature
+            "temperature": cls.__convert_kelvin_to_celsius(
+                kelvin_temperature=temperature
             ),
             "description": description
         }
@@ -56,7 +56,7 @@ class WeatherAPIService:
         return weather_response, temperature
 
     @staticmethod
-    def __convert_fahrenheit_to_celsius(fah_temperature: float):
-        converted_celsius = (5 / 9) * (fah_temperature - 32)
+    def __convert_kelvin_to_celsius(kelvin_temperature: float):
+        converted_celsius = kelvin_temperature - 273.15
         celsius = round(converted_celsius, 2)
         return celsius

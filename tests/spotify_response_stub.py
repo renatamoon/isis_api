@@ -1,4 +1,4 @@
-response = {
+response_playlist_stub = {
     'href': 'https://api.spotify.com/v1/playlists/74Zp7I7BsiFg4T7wFiV5Iu/tracks?offset=0&limit=7&market=BR',
     'items':
         [
