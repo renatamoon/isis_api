@@ -41,8 +41,8 @@ class MainServiceWeatherPlaylist:
             )
 
             response_dict = {
-                **weather_response,
-                **playlist_response
+                "tracks_for_you": playlist_response,
+                "about_your_weather": weather_response
             }
 
             return response_dict
@@ -56,8 +56,8 @@ class MainServiceWeatherPlaylist:
         )
 
         response_dict = {
-            **weather_response,
-            **playlist_response
+            "tracks_for_you": playlist_response,
+            "about_your_weather": weather_response
         }
 
         return response_dict

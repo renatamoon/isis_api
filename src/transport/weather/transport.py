@@ -36,6 +36,9 @@ class GetWeather:
 
             weather_response = requests.get(base_url)
 
+            if weather_response.status_code == 404:
+                raise ErrorFetchingWeatherData
+
             data = json.loads(weather_response.text)
 
             return data

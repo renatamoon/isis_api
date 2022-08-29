@@ -29,7 +29,7 @@ Some functionalities present on this project:
 
 - Python
 - FAST API
-- Playwright
+- API Consumer
 - Pydantic
 
 <hr>
@@ -60,9 +60,21 @@ Some functionalities present on this project:
 Create a project root `.env` file and change your local strings connections to do the properly connection <br>
 
 ```commandline
-MONGO_CONNECTION_URL=
-MONGODB_DATABASE_NAME=
-MONGODB_COLLECTION=
+# AUTHORIZATION
+CLIENT_ID=""
+CLIENT_SECRET_KEY=""
+SPOTIFY_TOKEN_URL="https://accounts.spotify.com/api/token"
+
+# PLAYLISTS URLS
+PARTY_PLAYLIST_URL="https://api.spotify.com/v1/playlists/37i9dQZF1DX7e8TjkFNKWH/tracks?market=BR&limit=7"
+POP_PLAYLIST_URL="https://api.spotify.com/v1/playlists/74Zp7I7BsiFg4T7wFiV5Iu/tracks?market=BR&limit=7"
+ROCK_PLAYLIST_URL="https://api.spotify.com/v1/playlists/6jmDxyne7FJ3fVA9CkGYpd/tracks?market=BR&limit=7"
+CLASSIC_PLAYLIST_URL="https://api.spotify.com/v1/playlists/6dI1MmIBasFV59ritLTxIJ/tracks?market=BR&limit=7"
+
+# OPEN WEATHER API
+OPEN_WEATHER_API_KEY=""
+COORDINATES_URL="https://api.openweathermap.org/data/2.5/onecall?lat=%s&lon=%s&appid=%s&units=metric"
+CITY_WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?"
 ```
 
 <hr>
@@ -81,8 +93,58 @@ MONGODB_COLLECTION=
 
 - Use the router on your Postman/Insomnia/Swagger: `http:{your-host}/get_playlist_weather` ;
 
+## <a> 🔴 QUERY PARAMS </a> 
+
+- search tracks by city pass the query param: `city`
+- search tracks by latitude and longitude, pass the query params: `latitude`, `longitude`
+
 <hr>
 
 ## <a id="response"> 🔴 API RESPONSES: </a> 
 
-- Expected return of the route `/get_playlist_weather` :
+- Expected return of the route `/get_playlist_weather` when passing `city` query param:
+```
+{
+    "tracks_for_you": [
+        {
+            "music_id": "5HCyWlXZPP0y6Gqq8TgA20",
+            "artist_name": "Justin Bieber",
+            "music_name": "STAY (with Justin Bieber)",
+            "album_name": "STAY (with Justin Bieber)"
+        },
+        {
+            "music_id": "4Dvkj6JhhA12EX05fT7y2e",
+            "artist_name": "Harry Styles",
+            "music_name": "As It Was",
+            "album_name": "Harry's House"
+        },
+        {
+            "music_id": "7mFj0LlWtEJaEigguaWqYh",
+            "artist_name": "Dua Lipa",
+            "music_name": "Sweetest Pie",
+            "album_name": "Sweetest Pie"
+        },
+        {
+            "music_id": "3DarAbFujv6eYNliUTyqtz",
+            "artist_name": "Doja Cat",
+            "music_name": "Kiss Me More (feat. SZA)",
+            "album_name": "Planet Her"
+        }
+    ],
+    "about_your_weather": {
+        "city": "Delhi",
+        "temperature": 29.05,
+        "description": "mist"
+    }
+}
+```
+- Expected return of the route when an error happened:
+
+```
+{
+    "request_status": false,
+    "status": 2,
+    "msg": "Error fetching data from Weather API"
+}
+
+```

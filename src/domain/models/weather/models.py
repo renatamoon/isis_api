@@ -1,7 +1,7 @@
 # STANDARD IMPORTS
 from typing import Optional
 from fastapi import Query
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 
 
 class CoordinatesModel(BaseModel):

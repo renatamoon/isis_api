@@ -8,7 +8,7 @@ from src.routers.playlist_weather_router.router import PlaylistWeatherRouter
 from src.domain.exceptions.exceptions import (
     InternalServerError,
     BadRequestError, ForbiddenError,
-    UnauthorizedError
+    UnauthorizedError, ErrorFetchingWeatherData, ClientSecretKeysNotProvided, ErrorFetchingSpotifyData
 )
 
 
@@ -50,7 +50,31 @@ class BaseRouter:
             return Response(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 content=json.dumps(
+                    {"request_status": False, "status": 1, "msg": e.args[0]}
+                ),
+            )
+
+        except ErrorFetchingWeatherData as e:
+            return Response(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                content=json.dumps(
                     {"request_status": False, "status": 2, "msg": e.args[0]}
+                ),
+            )
+
+        except ClientSecretKeysNotProvided as e:
+            return Response(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                content=json.dumps(
+                    {"request_status": False, "status": 3, "msg": e.args[0]}
+                ),
+            )
+
+        except ErrorFetchingSpotifyData as e:
+            return Response(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                content=json.dumps(
+                    {"request_status": False, "status": 4, "msg": e.args[0]}
                 ),
             )
 
@@ -58,7 +82,7 @@ class BaseRouter:
             return Response(
                 status_code=status.HTTP_403_FORBIDDEN,
                 content=json.dumps(
-                    {"request_status": False, "status": 3, "msg": e.args[0]}
+                    {"request_status": False, "status": 5, "msg": e.args[0]}
                 ),
             )
 
@@ -66,14 +90,14 @@ class BaseRouter:
             return Response(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 content=json.dumps(
-                    {"request_status": False, "status": 4, "msg": e.args[0]}
+                    {"request_status": False, "status": 6, "msg": e.args[0]}
                 ),
             )
         except InternalServerError as e:
             return Response(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 content=json.dumps(
-                    {"request_status": False, "status": 5, "msg": e.args[0]}
+                    {"request_status": False, "status": 7, "msg": e.args[0]}
                 ),
             )
 
@@ -83,7 +107,7 @@ class BaseRouter:
                 content=json.dumps(
                     {
                         "request_status": False,
-                        "status": 6,
+                        "status": 8,
                         "msg": f"An unexpected error occurred, {e}",
                     }
                 ),
