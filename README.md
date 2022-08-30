@@ -22,13 +22,15 @@ Some functionalities present on this project:
     * Spotify Developer API consummer;
     * Weather Map API consummer;
 
+<br>
+
 🟩 PROJECT STATUS: <b>FINISHED</b> <br>
 
 <hr>
 
 ## <a id="tecnologias"> 🧪 TECHNOLOGIES </a>
 
-- Python
+- Python 
 - FAST API
 - API Consumer
 - Pydantic
@@ -157,6 +159,8 @@ CITY_WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?"
 - To get the coverage of the project tests run the command on root path: `pytest --cov-report term-missing --cov-config=.coveragerc --cov=src -v`
 - To run the mutatest and get the mutants survivor tolerance, run the command on root path: `bash mutation_test.sh`
 
+
+
 - Coverage: <br>
 <br>
 ![img.png](img.png)
@@ -164,4 +168,5 @@ CITY_WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?"
 
 - Mutation Survivor Tolerance: <br>
  <br>
+- 
 ![img_1.png](img_1.png)
