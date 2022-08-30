@@ -31,6 +31,7 @@ Some functionalities present on this project:
 - FAST API
 - API Consumer
 - Pydantic
+- Pytest
 
 <hr>
 

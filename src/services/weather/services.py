@@ -10,7 +10,7 @@ class WeatherAPIService:
     @classmethod
     def get_weather_information_coordinates(
             cls, coordinates_model: CoordinatesModel
-    ):
+    ) -> tuple:
         weather_info = cls.transport.get_coordinate_weather(
             lat=coordinates_model.latitude,
             lon=coordinates_model.latitude
@@ -25,7 +25,7 @@ class WeatherAPIService:
     @classmethod
     def get_weather_information_by_city(
             cls, city_model: CityModel
-    ):
+    ) -> tuple:
         city = city_model.city.title()
 
         weather_info = cls.transport.get_city_weather(
@@ -42,7 +42,7 @@ class WeatherAPIService:
     def __get_weather_information(
             cls,
             weather_info: dict
-    ):
+    ) -> tuple:
         if weather_info.get("name"):
 
             city = weather_info.get("name", "Not Informed")
@@ -73,7 +73,7 @@ class WeatherAPIService:
         return weather_response, temperature_celsius
 
     @staticmethod
-    def __convert_kelvin_to_celsius(kelvin_temperature: float):
+    def __convert_kelvin_to_celsius(kelvin_temperature: float) -> float:
         converted_celsius = kelvin_temperature - 273.15
         celsius = round(converted_celsius, 2)
         return celsius

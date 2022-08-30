@@ -1,7 +1,0 @@
-[run]
-omit =
-    */__init__.py
-    src/domain/enums/*
-    src/domain/exceptions/*
-    src/*/enum/*
-    src/domain/models/weather/*
