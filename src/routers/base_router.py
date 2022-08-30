@@ -7,8 +7,12 @@ import json
 from src.routers.playlist_weather_router.router import PlaylistWeatherRouter
 from src.domain.exceptions.exceptions import (
     InternalServerError,
-    BadRequestError, ForbiddenError,
-    UnauthorizedError, ErrorFetchingWeatherData, ClientSecretKeysNotProvided, ErrorFetchingSpotifyData,
+    BadRequestError,
+    ForbiddenError,
+    UnauthorizedError,
+    ErrorFetchingWeatherData,
+    ClientSecretKeysNotProvided,
+    ErrorFetchingSpotifyData,
     InvalidParamsWereSent
 )
 
@@ -36,14 +40,14 @@ class BaseRouter:
 
     @staticmethod
     @app.middleware("http")
-    async def middleware_response(request: Request, call_next: callable):
+    def middleware_response(request: Request, call_next: callable):
         middleware_service_response = await BaseRouter.__add_process_time_header(
             request=request, call_next=call_next
         )
         return middleware_service_response
 
     @staticmethod
-    async def __add_process_time_header(request: Request, call_next):
+    def __add_process_time_header(request: Request, call_next):
         try:
             response = await call_next(request)
 

@@ -3,7 +3,6 @@ omit =
     */main.py
     src/domain/exceptions/*
     src/domain/models/*
-    src/routers/*
     tests/*
     */__init__.py
 

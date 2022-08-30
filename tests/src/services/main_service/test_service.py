@@ -1,14 +1,13 @@
 # STANDARD IMPORTS
 from unittest.mock import patch
-
 import pytest
 
-from src.domain.exceptions.exceptions import InvalidParamsWereSent
-from src.domain.models.weather.models import CoordinatesModel, CityModel
 # PROJECT IMPORTS
 from src.services.main_service.service import MainServiceWeatherPlaylist
 from src.services.spotify.services import SpotifyPlaylistsService
 from src.services.weather.services import WeatherAPIService
+from src.domain.exceptions.exceptions import InvalidParamsWereSent
+from src.domain.models.weather.models import CoordinatesModel, CityModel
 
 # STUBS
 from tests.src.services.main_service.file_stub import playlist_object_stub, weather_response_stub_2

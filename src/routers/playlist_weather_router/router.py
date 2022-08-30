@@ -16,7 +16,7 @@ class PlaylistWeatherRouter:
 
     @staticmethod
     @__playlist_by_weather_router.get("/get_playlist_weather", tags=["PLAYLIST WEATHER"])
-    async def get_playlist_response(
+    def get_playlist_response(
             coordinate_model: CoordinatesModel = Depends(),
             city_model: CityModel = Depends()
     ):
