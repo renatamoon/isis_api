@@ -39,7 +39,7 @@ Some functionalities present on this project:
 
 <hr>
 
-## <a id="instalacao"> 🔴 HOW TO INSTALL IT </a> 
+## <a id="instalacao"> HOW TO INSTALL IT </a> 
 
 <b>- Clone the repo with the following command:</b> `https://github.com/renatamoon/isis_api.git` <br>
 
@@ -84,28 +84,28 @@ CITY_WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?"
 
 <hr>
 
-## <a id="execução"> 🔴 EXECUTE HYPERCORN </a> 
+## <a id="execução"> EXECUTE HYPERCORN </a> 
 
 - To Execute the application run the command: `uvicorn main:app --reload` or manually run the `main.py` file.
 
 <hr>
 
-## <a> 🔴 USING THE SWAGGER (NATIVE FOR FAST API) </a> 
+## <a> USING THE SWAGGER (NATIVE FOR FAST API) </a> 
 
 - To user the FastAPI user the router: `http:{your-host}/get_playlist_weather/docs`
 
-## <a> 🔴 REQUISITION ROUTER </a> 
+## <a> REQUISITION ROUTER </a> 
 
 - Use the router on your Postman/Insomnia/Swagger: `http:{your-host}/get_playlist_weather` ;
 
-## <a> 🔴 QUERY PARAMS </a> 
+## <a> QUERY PARAMS </a> 
 
 - search tracks by city, pass the query param: `city`
 - search tracks by latitude and longitude, pass the query params: `latitude` & `longitude`
 
 <hr>
 
-## <a id="response"> 🔴 API RESPONSES: </a> 
+## <a id="response"> API RESPONSES: </a> 
 
 - Expected return of the route `/get_playlist_weather` when passing `city` query param:
 ```
@@ -154,7 +154,7 @@ CITY_WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?"
 
 ```
 
-## <a id="testes"> 🔴 API TESTS: </a> 
+## <a id="testes"> API TESTS: </a> 
 
 - To get the coverage of the project tests run the command on root path: `pytest --cov-report term-missing --cov-config=.coveragerc --cov=src -v`
 - To run the mutatest and get the mutants survivor tolerance, run the command on root path: `bash mutation_test.sh`
