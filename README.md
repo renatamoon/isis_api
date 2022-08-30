@@ -8,7 +8,7 @@
   <a href="#instalacao">How to install</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
   <a href="#execução">How to execute it</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
   <a href="#response">Response</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
-<a href="#testes">API TESTS</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+  <a href="#testes">API TESTS</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
 </p>
 
 ## <a id="projeto"> 💻 ABOUT THE PROJECT </a>
@@ -18,11 +18,11 @@ coordinates and returns a playlist (only track names is fine) suggestion accordi
 
 Some functionalities present on this project:
 
-    * Route to return musics of a playlist according to weather city;
+    * Route to return musics of a playlist according to weather city or latitude and longitude;
     * Spotify Developer API consummer;
     * Weather Map API consummer;
 
-🟩 PROJECT STATUS: <b>STILL IN DEVELOPMENT ... </b> <br>
+🟩 PROJECT STATUS: <b>FINISHED</b> <br>
 
 <hr>
 
@@ -84,7 +84,7 @@ CITY_WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?"
 
 ## <a id="execução"> 🔴 EXECUTE HYPERCORN </a> 
 
-- To Execute the application run the command: `uvicorn main:app --reload`
+- To Execute the application run the command: `uvicorn main:app --reload` or manually run the `main.py` file.
 
 <hr>
 
@@ -98,8 +98,8 @@ CITY_WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?"
 
 ## <a> 🔴 QUERY PARAMS </a> 
 
-- search tracks by city pass the query param: `city`
-- search tracks by latitude and longitude, pass the query params: `latitude`, `longitude`
+- search tracks by city, pass the query param: `city`
+- search tracks by latitude and longitude, pass the query params: `latitude` & `longitude`
 
 <hr>
 
@@ -135,13 +135,13 @@ CITY_WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?"
         }
     ],
     "about_your_weather": {
-        "city": "Delhi",
+        "city_or_timezone": "Delhi",
         "temperature": 29.05,
         "description": "mist"
     }
 }
 ```
-- Expected return of the route when an error happened:
+- Example of expected response of the route when an error happened:
 
 ```
 {
@@ -158,8 +158,10 @@ CITY_WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?"
 - To run the mutatest and get the mutants survivor tolerance, run the command on root path: `bash mutation_test.sh`
 
 - Coverage: <br>
+<br>
 ![img.png](img.png)
 
 
 - Mutation Survivor Tolerance: <br>
+ <br>
 ![img_1.png](img_1.png)
