@@ -159,11 +159,9 @@ CITY_WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?"
 - To get the coverage of the project tests run the command on root path: `pytest --cov-report term-missing --cov-config=.coveragerc --cov=src -v`
 - To run the mutatest and get the mutants survivor tolerance, run the command on root path: `bash mutation_test.sh`
 
-- Coverage: <br>
+- Coverage:
 <br>
-![img.png](img.png)
 
+![img_2.png](img_2.png)
 
-- Mutation Survivor Tolerance: <br>
- <br>
-![img_1.png](img_1.png)
+- Mutation Survivor Tolerance:
