@@ -8,7 +8,7 @@
   <a href="#instalacao">How to install</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
   <a href="#execução">How to execute it</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
   <a href="#response">Response</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
-<a href="#testss">API TESTS</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+<a href="#testes">API TESTS</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
 </p>
 
 ## <a id="projeto"> 💻 ABOUT THE PROJECT </a>
@@ -157,9 +157,9 @@ CITY_WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?"
 - To get the coverage of the project tests run the command on root path: `pytest --cov-report term-missing --cov-config=.coveragerc --cov=src -v`
 - To run the mutatest and get the mutants survivor tolerance, run the command on root path: `bash mutation_test.sh`
 
-- Coverage:
+- Coverage: <br>
 ![img.png](img.png)
 
 
-- Mutation Survivor Tolerance
+- Mutation Survivor Tolerance: <br>
 ![img_1.png](img_1.png)
