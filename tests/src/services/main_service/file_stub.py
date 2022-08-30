@@ -18,3 +18,17 @@ playlist_object_stub = [
         "album_name": "Dawn FM"
     }
 ]
+
+
+weather_response_stub = {
+        "city_or_timezone": "Delhi",
+        "temperature": 29.05,
+        "description": "mist"
+    }
+
+
+weather_response_stub_2 = {
+    "city_or_timezone": "Delhi",
+    "temperature": "27.14",
+    "description": "hot weather"
+}
