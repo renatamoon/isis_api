@@ -1,4 +1,5 @@
 # PROJECT IMPORTS
+from src.domain.exceptions.exceptions import InvalidParamsWereSent
 from src.domain.models.weather.models import CoordinatesModel, CityModel
 from src.services.spotify.services import SpotifyPlaylistsService
 from src.services.weather.services import WeatherAPIService
@@ -31,6 +32,7 @@ class MainServiceWeatherPlaylist:
             coordinate_model: CoordinatesModel = None,
             city_model: CityModel = None
     ):
+
         if coordinate_model.latitude and coordinate_model.longitude:
             weather_response, temperature = WeatherAPIService.get_weather_information_coordinates(
                 coordinates_model=coordinate_model
@@ -47,17 +49,22 @@ class MainServiceWeatherPlaylist:
 
             return response_dict
 
-        weather_response, temperature = WeatherAPIService.get_weather_information_by_city(
-            city_model=city_model
-        )
+        elif city_model.city:
 
-        playlist_response = cls.get_playlists(
-            temperature=temperature
-        )
+            weather_response, temperature = WeatherAPIService.get_weather_information_by_city(
+                city_model=city_model
+            )
 
-        response_dict = {
-            "tracks_for_you": playlist_response,
-            "about_your_weather": weather_response
-        }
+            playlist_response = cls.get_playlists(
+                temperature=temperature
+            )
 
-        return response_dict
+            response_dict = {
+                "tracks_for_you": playlist_response,
+                "about_your_weather": weather_response
+            }
+
+            return response_dict
+
+        else:
+            raise InvalidParamsWereSent

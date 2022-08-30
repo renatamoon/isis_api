@@ -20,7 +20,8 @@ from tests.src.services.weather.weather_stubs import (
         weather_response_stub, "27.14"
 ))
 def test_get_weather_information_coordinates_when_sending_right_params_then_return_the_expected(
-        mock_get_coordinate_weather, mock_get_weather_information
+        mock_get_coordinate_weather,
+        mock_get_weather_information
 ):
     response = WeatherAPIService.get_weather_information_coordinates(
         coordinates_model=CoordinatesModel(**params_coordinates)
@@ -42,7 +43,8 @@ def test_get_weather_information_coordinates_when_sending_wrong_params_then_rais
         weather_response_stub, "27.14"
 ))
 def test_get_weather_information_by_city_when_sending_city_right_params_then_return_the_expected(
-        mock_get_coordinate_weather, mock_get_weather_information
+        mock_get_coordinate_weather,
+        mock_get_weather_information
 ):
     response = WeatherAPIService.get_weather_information_by_city(
         city_model=CityModel(**{"city": "Delhi"})

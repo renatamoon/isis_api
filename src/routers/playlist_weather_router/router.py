@@ -20,6 +20,7 @@ class PlaylistWeatherRouter:
             coordinate_model: CoordinatesModel = Depends(),
             city_model: CityModel = Depends()
     ):
+
         response = MainServiceWeatherPlaylist.get_service_response(
             coordinate_model=coordinate_model,
             city_model=city_model

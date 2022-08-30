@@ -3,6 +3,11 @@ class ErrorFetchingSpotifyData(Exception):
         super().__init__(msg, *args, **kwargs)
 
 
+class InvalidParamsWereSent(Exception):
+    def __init__(self, msg="Error: You should insert valid query params: city or latitude and longitude", *args, **kwargs):
+        super().__init__(msg, *args, **kwargs)
+
+
 class ClientSecretKeysNotProvided(Exception):
     def __init__(self, msg="YOU MUST SET A client_secret and client_secret", *args, **kwargs):
         super().__init__(msg, *args, **kwargs)

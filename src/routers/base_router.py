@@ -8,7 +8,8 @@ from src.routers.playlist_weather_router.router import PlaylistWeatherRouter
 from src.domain.exceptions.exceptions import (
     InternalServerError,
     BadRequestError, ForbiddenError,
-    UnauthorizedError, ErrorFetchingWeatherData, ClientSecretKeysNotProvided, ErrorFetchingSpotifyData
+    UnauthorizedError, ErrorFetchingWeatherData, ClientSecretKeysNotProvided, ErrorFetchingSpotifyData,
+    InvalidParamsWereSent
 )
 
 
@@ -16,7 +17,7 @@ class BaseRouter:
 
     app = FastAPI(
         title="ISIS API",
-        description="micro-service able to accept RESTFUL requests receiving as parameter either city name or lat "
+        description="Micro-service able to accept RESTFUL requests receiving as parameter either city name or lat "
                     "long coordinates and returns a playlist (only track names is fine) suggestion according "
                     "to the current temperature.",
     )
@@ -59,6 +60,14 @@ class BaseRouter:
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 content=json.dumps(
                     {"request_status": False, "status": 2, "msg": e.args[0]}
+                ),
+            )
+
+        except InvalidParamsWereSent as e:
+            return Response(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                content=json.dumps(
+                    {"request_status": False, "status": 9, "msg": e.args[0]}
                 ),
             )
 
